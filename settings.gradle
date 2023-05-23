@@ -17,7 +17,6 @@ pluginManagement {
 }
 
 rootProject.name = 'ejercicio-microservicios'
-include('app')
 include('products')
 include('cart')
 include('deals')

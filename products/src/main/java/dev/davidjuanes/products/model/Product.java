@@ -2,6 +2,9 @@ package dev.davidjuanes.products.model;
 
 import dev.davidjuanes.domain.AbstractEntity;
 import dev.davidjuanes.domain.product.ProductDto;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -9,7 +12,9 @@ import java.math.RoundingMode;
 
 @Getter @Setter
 @ToString @EqualsAndHashCode(callSuper = false)
+@Entity
 public class Product extends AbstractEntity<Product, ProductDto> {
+    @Id @GeneratedValue
     private Long id;
     private String name;
     private String description;

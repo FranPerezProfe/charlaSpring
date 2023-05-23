@@ -166,8 +166,25 @@ Aquí tienes una lista de algunos códigos de estado HTTP comúnmente utilizados
 
 ## Parte Práctica
 
-Modelo de datos (Entities vs DTOs)
-Controllers
-Error Handlers
-Servicios
-Repositories
+## Requisitos
+
+- Docker Desktop 
+- JDK 17
+- Git
+- Postman Desktop Agent
+
+# Descripción de la Práctica
+
+
+# Detalles técnicos
+
+## Modelo de datos (Entities vs DTOs)
+## API Controllers
+
+Tutorial de como crear un Controller en Spring: https://spring.io/guides/tutorials/rest/
+
+## API Error Handlers
+
+## Servicios
+
+## Repositories

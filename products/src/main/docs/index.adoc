@@ -1,0 +1,11 @@
+= Products API Documentation
+
+This is an example output for a service running at http://localhost:8080:
+
+.request
+include::{snippets}/products-get/http-request.adoc[]
+
+.response
+include::{snippets}/products-get/http-response.adoc[]
+
+As you can see the format is very simple, and in fact you always get the same message.

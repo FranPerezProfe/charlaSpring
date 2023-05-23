@@ -30,7 +30,8 @@ dependencies {
 	implementation project(':domain-model') // Import internal module domain-model to import the DTOs
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:postgresql' //Database for production
+	runtimeOnly 'com.h2database:h2:2.1.214' //Database for development (in-memory db)
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'

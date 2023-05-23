@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.5'
 	id 'io.spring.dependency-management' version '1.1.0'
-	id 'org.asciidoctor.convert' version '2.4.0'
+	id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
 group = 'dev.davidjuanes'
@@ -30,7 +30,9 @@ dependencies {
 	implementation project(':domain-model') // Import internal module domain-model to import the DTOs
 	implementation 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:postgresql' //Database for production
+	runtimeOnly 'com.h2database:h2:2.1.214' //Database for development (in-memory db)
+
 	annotationProcessor 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -45,4 +47,26 @@ tasks.named('test') {
 tasks.named('asciidoctor') {
 	inputs.dir snippetsDir
 	dependsOn test
+}
+
+asciidoctor {
+	sourceDir  file('src/main/docs')
+	sources {
+		include 'index.adoc'
+	}
+	outputDir  file('build/docs')
+	baseDirFollowsSourceFile()
+
+	attributes \
+        'build-gradle': file('build.gradle'),
+		'sourcedir': project.sourceSets.main.java.srcDirs[0],
+		'snippets': snippetsDir,
+		'endpoint-url': 'http://example.org',
+		'imagesdir': 'images',
+		'toc': 'left',
+		'icons': 'font',
+		'setanchors': '',
+		'idprefix': '',
+		'idseparator': '-',
+		'docinfo': 'shared'
 }
