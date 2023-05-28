@@ -25,6 +25,12 @@ public class ProductApiController {
 
     @GetMapping("/{id}")
     public ProductDto getProduct(@PathVariable Long id) {
+//        Optional<Product> productOptional = productRepository.findById(id);
+//        if(productOptional.isPresent()) {
+//            return productOptional.get().mapToDto();
+//        } else {
+//            throw new ProductNotFoundException(id);
+//        }
         return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id)).mapToDto();
     }
     @PostMapping

@@ -43,12 +43,12 @@ quebradero de cabeza para mantener y escalar su aplicación.
 Veamos las principales desventajas de los monolitos:
 - **_Fuerte acoplamiento:_** El código no está separado, cualquier desarollador puede usar una clase de una parte del proyecto en otra donde no deberia usarse. Esto lleva a gran acoplamiento entre clases, y la consecuencia es que cambiar ese código sera muy dificil,  porque se usa en muchos sitios.
 - **_Atado a la tecnología:_** En un monolito no podemos elegir usar Java para una parte y Python para otra, ni siquiera usar una versión diferente del compilador (JDK 8 or JDK 17). Algo parecido pasa con las bases de datos o los frameworks. Y también se hace muy dificil actualizar esas dependencias; Cambiar de version de Java a un proyecto de millones de lineas no es tarea facil.
-- **_Limitaciones de Escalado:_** Qué es escalar? escalar es crear más instancias de tu aplicacion para soportar una carga de trabajo más grande. En no suele estar diseñado para escalar; se suelen diseñar pensando que solo habrá una instancia de este. Incluso si pudiera escalar, habria que escalar la aplicacion entera, no tenemos la posibilidad de escalar solamente la parte de la aplicación que está sufriendo una alta demanda -> gasto inecesario de recursos
+- **_Limitaciones de Escalado:_** Qué es escalar? escalar es crear más instancias de tu aplicación para soportar una carga de trabajo más grande. En no suele estar diseñado para escalar; se suelen diseñar pensando que solo habrá una instancia de este. Incluso si pudiera escalar, habria que escalar la aplicacion entera, no tenemos la posibilidad de escalar solamente la parte de la aplicación que está sufriendo una alta demanda -> gasto inecesario de recursos
 - **_Punto único de fallo:_** En caso de que algo falle en el monolito, podría llegar a afectar a toda la aplicación, lo cual se conoce como un single point of failure (SPOF)
 
 ### Microservicios
 Microservicios vienen a romper el monolito. "Divide and Conquer". En arquitectura de microservicios dividimos las areas de nuestra
-aplicacion en aplicaciones mas pequeñas, que son independientes unas de otras, y se comunican por APIs o Eventos. 
+aplicacion en aplicaciones más pequeñas, que son independientes unas de otras, y se comunican por APIs o Eventos. 
 
 Estas son las principales ventajas al usar una arquitectura de microservicios:
 - **_Libertad tecnológica:_** Debido a que los microservicios son proyectos independientes incluso a nivel de base de datos, da la agilidad para decidir e implantar la tecnología a utilizar en función de los requisitos de negocio para cada caso.
@@ -120,6 +120,8 @@ Hibernate es un framework de mapeo objeto-relacional (ORM) para Java. Su objetiv
 
 El funcionamiento de Hibernate se basa en el mapeo de objetos Java a tablas de la base de datos y viceversa. A través de anotaciones o archivos de configuración XML, Hibernate establece la correspondencia entre las clases Java y las tablas de la base de datos, así como entre los atributos de las clases y las columnas de las tablas.
 
+Relaciones con Hibernate: https://www.baeldung.com/spring-data-rest-relationships
+
 
 ## REST APIs
 ![](resources/images/REST%20APIs.jpg)
@@ -167,17 +169,19 @@ Aquí tienes una lista de algunos códigos de estado HTTP comúnmente utilizados
 ## Parte Práctica
 
 ## Requisitos
-
-- Docker Desktop 
+- Intellij IDEA Community Edition
 - JDK 17
 - Git
-- Postman Desktop Agent
+- Docker Desktop
+- Postman Desktop Agent (Se necesita cuenta)
+
 
 # Descripción de la Práctica
 
 
 # Detalles técnicos
-
+- Spring Scopes
+- Lambdas
 ## Modelo de datos (Entities vs DTOs)
 ## API Controllers
 

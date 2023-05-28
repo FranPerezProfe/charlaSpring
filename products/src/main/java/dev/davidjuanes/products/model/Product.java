@@ -26,7 +26,7 @@ public class Product extends AbstractEntity<Product, ProductDto> {
         super(Product.class, ProductDto.class);
         // Define de mapping between Product and ProductDto. There's a map that the tool cannot implicitly match, and that is
         // the price: in the DTO, the price is the price with taxes, and in the Product, we have the price without taxes and
-        // the tax to be applied. Here we add a explicit rule to map this field
+        // the tax to be applied. Here we add an explicit rule to map this field
         modelMapper.typeMap(Product.class, ProductDto.class).addMappings(
                 mapper ->  {
                     mapper.map(Product::getRetailPrice, ProductDto::setPrice);

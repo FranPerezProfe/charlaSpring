@@ -1,23 +1,15 @@
 package dev.davidjuanes.products.api.controllers;
 
-import com.fasterxml.jackson.core.PrettyPrinter;
-import com.fasterxml.jackson.core.util.DefaultIndenter;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.davidjuanes.products.api.repositories.ProductRepository;
 import dev.davidjuanes.products.model.Product;
 import org.assertj.core.util.Lists;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.restdocs.operation.preprocess.ContentModifyingOperationPreprocessor;
-import org.springframework.restdocs.operation.preprocess.OperationPreprocessor;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.IOException;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
