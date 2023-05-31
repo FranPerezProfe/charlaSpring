@@ -1,6 +1,6 @@
 = Products API Documentation
 
-This is an example output for a service running at http://localhost:8080:
+== Get All Products
 
 .request
 include::{snippets}/products-get/http-request.adoc[]
@@ -8,4 +8,75 @@ include::{snippets}/products-get/http-request.adoc[]
 .response
 include::{snippets}/products-get/http-response.adoc[]
 
-As you can see the format is very simple, and in fact you always get the same message.
+.response fields
+include::{snippets}/products-get/response-fields.adoc[]
+
+== Get a product by its ID
+
+.request
+include::{snippets}/product-get/http-request.adoc[]
+
+.response
+include::{snippets}/product-get/http-response.adoc[]
+
+.response fields
+include::{snippets}/product-get/response-fields.adoc[]
+
+If the product cannot be found, you'll recieve an error like this one:
+
+.not found error
+include::{snippets}/product-get-not-found/http-response.adoc[]
+
+include::{snippets}/product-get-not-found/response-fields.adoc[]
+
+== Add a new product
+
+.request
+include::{snippets}/products-post/http-request.adoc[]
+
+.request fields
+include::{snippets}/products-post/request-fields.adoc[]
+
+.response
+include::{snippets}/products-post/http-response.adoc[]
+
+.response fields
+include::{snippets}/products-post/response-fields.adoc[]
+
+== Update an existing product
+
+.request
+include::{snippets}/products-put/http-request.adoc[]
+
+.request fields
+include::{snippets}/products-put/request-fields.adoc[]
+
+.response
+include::{snippets}/products-put/http-response.adoc[]
+
+.response fields
+include::{snippets}/products-put/response-fields.adoc[]
+
+If the product cannot be found, you'll recieve an error like this one:
+
+.not found error
+include::{snippets}/products-put-not-found/http-response.adoc[]
+
+include::{snippets}/products-put-not-found/response-fields.adoc[]
+
+== Delete All Products
+
+.request
+include::{snippets}/products-delete/http-request.adoc[]
+
+.response
+include::{snippets}/products-delete/http-response.adoc[]
+
+
+== Delete a product by its ID
+
+.request
+include::{snippets}/product-delete/http-request.adoc[]
+
+.response
+include::{snippets}/product-delete/http-response.adoc[]

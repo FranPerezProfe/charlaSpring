@@ -1,10 +1,11 @@
 package dev.davidjuanes.products.api.controllers;
 
-import dev.davidjuanes.domain.AbstractEntity;
-import dev.davidjuanes.domain.product.ProductDto;
+import dev.davidjuanes.products.api.dto.NewOrUpdatedProductDto;
+import dev.davidjuanes.products.api.dto.ProductDto;
 import dev.davidjuanes.products.api.errors.ProductNotFoundException;
-import dev.davidjuanes.products.api.repositories.ProductRepository;
+import dev.davidjuanes.products.repositories.ProductRepository;
 import dev.davidjuanes.products.model.Product;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/products")
+@Slf4j
 public class ProductApiController {
 
     @Autowired
@@ -20,6 +22,7 @@ public class ProductApiController {
 
     @GetMapping
     public List<ProductDto> getAllProducts() {
+        log.info("Getting all products...");
         return productRepository.findAll().stream().map(Product::mapToDto).collect(Collectors.toList());
     }
 
@@ -31,26 +34,33 @@ public class ProductApiController {
 //        } else {
 //            throw new ProductNotFoundException(id);
 //        }
+        log.info("Getting product {}...", id);
         return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id)).mapToDto();
     }
     @PostMapping
-    public ProductDto addProduct(@RequestBody Product product) {
-        return productRepository.save(product).mapToDto();
+    public ProductDto addProduct(@RequestBody NewOrUpdatedProductDto product) {
+        return productRepository.save(new Product().mapToEntity(product)).mapToDto();
     }
 
     @PutMapping("/{id}")
-    public ProductDto updateProduct(@RequestBody  Product updatedProduct, @PathVariable Long id) {
-        updatedProduct.setId(id); //Ensure ID is correctly set
-        return productRepository.save(updatedProduct).mapToDto();
+    public ProductDto updateProduct(@RequestBody NewOrUpdatedProductDto updatedProduct, @PathVariable Long id) {
+        log.info("Updating product {}...", id);
+        //Ensure ID is correctly set
+        updatedProduct.setId(id);
+        //Check if the product exists, otherwise throw not found exception
+        productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+        return productRepository.save(new Product().mapToEntity(updatedProduct)).mapToDto();
     }
 
     @DeleteMapping
     public void deleteAllProducts() {
+        log.info("Deleting all products...");
         productRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
+        log.info("Deleting product {}", id);
         productRepository.deleteById(id);
     }
 }

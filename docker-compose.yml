@@ -1,5 +1,17 @@
 version: '3.3'
 services:
+  products-api:
+    container_name: products-api
+    build:
+      context: products
+      dockerfile: Dockerfile
+    image: products-api:latest
+    environment:
+      - spring_profiles_active=production
+    depends_on:
+      - db
+    ports:
+      - 8001:8001
   db:
     container_name: db
     image: postgres
@@ -8,6 +20,8 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: my_shop_db
+    volumes:
+      - ./production/postgres/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   pgadmin:
@@ -16,6 +30,11 @@ services:
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ./production/pgadmin/servers.json:/pgadmin4/servers.json
+    depends_on:
+      - db
     ports:
       - "5050:80"

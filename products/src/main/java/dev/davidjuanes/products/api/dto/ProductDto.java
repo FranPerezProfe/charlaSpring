@@ -1,4 +1,4 @@
-package dev.davidjuanes.domain.product;
+package dev.davidjuanes.products.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.davidjuanes.domain.AbstractDto;

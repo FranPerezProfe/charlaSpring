@@ -1,1 +1,2 @@
-docker-compose up
+./gradlew bootJar
+docker-compose up --build

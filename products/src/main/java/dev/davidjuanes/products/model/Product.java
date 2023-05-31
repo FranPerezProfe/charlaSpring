@@ -1,7 +1,7 @@
 package dev.davidjuanes.products.model;
 
 import dev.davidjuanes.domain.AbstractEntity;
-import dev.davidjuanes.domain.product.ProductDto;
+import dev.davidjuanes.products.api.dto.ProductDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

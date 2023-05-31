@@ -182,6 +182,20 @@ Aquí tienes una lista de algunos códigos de estado HTTP comúnmente utilizados
 # Detalles técnicos
 - Spring Scopes
 - Lambdas
+
+## Cómo empezar
+Teneis que importar el proyecto desde Github a vuestro Intellij. Para ello, creais un nuevo "Project from VCS":
+Git Checkout URL:  https://github.com/FranPerezProfe/charlaSpring.git
+
+
+Una vez importado, tenemos que configurar el JDK que vamos a usar, en este caso version 17. Para ello, hacemos click derecho
+en la carpeta principal del proyecto, seleccionamos "Open Module Settings" y vamos a la tab Dependencies descargamos el JDK 17
+
+También tenemos que hacer este cambio en "Preferences... > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM"
+Ahora, hacemos click derecho en el archivo settings.gradle y seleccionamos "Link Gradle Project". Esperamos hasta
+que se haya configurado todo.
+
+
 ## Modelo de datos (Entities vs DTOs)
 ## API Controllers
 
