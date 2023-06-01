@@ -1,0 +1,80 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentCart.id">
+    <h4>Cart</h4>
+    <div>
+      <label><strong>ID:</strong></label> {{ currentCart.id }}
+    </div>
+    Items:
+    <div *ngFor="let item of currentCart.items">
+      {{item.name}}  {{item.priceWithTaxes}}€
+    </div>
+    Total Price: {{currentCart.totalPrice}}€
+<!--    <div>-->
+<!--      {{ currentProduct.description }}-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label><strong>Price:</strong></label>-->
+<!--      {{ currentProduct.price }}-->
+<!--    </div>-->
+
+    <a
+      class="badge badge-warning"
+      routerLink="/carts/{{ currentCart.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentCart">
+    <br />
+    <p>Please click on a Cart...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentCart.id" class="edit-form">
+    <h4>Cart</h4>
+    <form>
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input
+          type="text"
+          class="form-control"
+          id="id"
+          [(ngModel)]="currentCart.id"
+          name="id"
+        />
+      </div>
+      <div *ngFor="let item of currentCart.items; let i = index">
+        {{item.name}} - {{item.priceWithTaxes}}€ <a role="button" (click)="deleteItem(i)">Delete</a>
+
+      </div>
+
+    <h4>Add Products to the cart</h4>
+      <select id="items" name="newProducts" multiple class="custom-select" [(ngModel)]="selectedProducts">
+        <ng-container *ngFor="let product of products">
+          <option *ngIf="productNotInCart(product)" [ngValue]="product">{{product.name}}</option>
+        </ng-container>
+
+      </select>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteCart()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateCart()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentCart.id">
+    <br />
+    <p>Cannot access this Cart...</p>
+  </div>
+</ng-template>

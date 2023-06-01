@@ -1,0 +1,35 @@
+<div class="list row">
+
+  <div class="col-md-6">
+    <h4>Carts List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let cart of carts; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveCart(cart, i)"
+      >
+        {{ cart.id }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllCarts()">
+      Remove All
+    </button>
+    <button class="m-3 btn btn-sm btn-info" (click)="refreshList()">
+      Refresh
+    </button>
+  </div>
+  <div class="col-md-6">
+    <app-cart-details
+      [viewMode]="true"
+      [currentCart]="currentCart"
+    ></app-cart-details>
+  </div>
+</div>
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Add a new Cart</h4>
+    <app-add-cart></app-add-cart>
+  </div>
+</div>

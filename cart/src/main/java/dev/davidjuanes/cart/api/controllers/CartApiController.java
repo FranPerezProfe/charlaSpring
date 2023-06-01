@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/carts")
 @Slf4j
+@CrossOrigin
 public class CartApiController {
 
     @Autowired
