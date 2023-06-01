@@ -263,3 +263,28 @@ Aqui podeis encontrar una colección de Postman con todas las llamadas REST de l
 [docs/Práctica Microservicios.postman_collections.json](docs/Práctica%20Microservicios.postman_collection.json)
 
 Podeis importar este `json` a vuestro postman.
+
+## DevOps: Docker & Docker-compose
+Hasta ahora hemos corrido nuestros servicios de forma manual usando gradle. Ahora vamos a ver como se podria poner en producción
+nuestra tienda usando docker y docker-compose.
+
+Docker es un programa que hace que podamos correr software dentro de contenedores. Un contenedor es un entorno aislado
+(como una máquina virtual, pero mucho mas liviana) donde podemos tener las herramientas que necesitamos (JRE, Base de datos...)
+y nuestro software.
+
+Una vez tenemos definido nuestra imagen de docker, podemos ejecutarla, y pasará a ser un contenedor. Haciendo una analogía, 
+una imagen de docker seria una clase de java, y un contenedor seria un objeto 
+
+En nuestro caso vamos a usar cinco contenedores:
+- producs-api
+- carts-api
+- database (postgres)
+- pgadmin (para poder observar que ocurre en la base de datos)
+- api-gateway (nginx) para aunar los endpoints REST de los dos servicios bajo el mismo puerto 80.
+
+Para ayudarnos a desplegar todos estos contenedores juntos, usamos docker-compose. En un yaml definimos los contenedores
+que queremos desplegar, y docker-compose se encargará de hacerlo por nosotros.
+
+He puesto en la carpeta principal del proyecto tres scripts que podeis usar: start.sh, stop.sh y clean.sh
+El ultimo limpia el entorno, borra los archivos de base de datos que se hayan creado. Es como empezar de nuevo.
+
