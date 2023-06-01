@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-@ControllerAdvice
+//TODO Anotate this class to tell Spring this is an Exception Handler (Controller Advice)
 @Slf4j
 public class ErrorControllerAdvice {
 
-    @ResponseBody
-    @ExceptionHandler(ProductNotFoundException.class)
-    @ResponseStatus(NOT_FOUND)
+    /*TODO Add three annotations needed here. You need to tell Spring that this method should be used when
+     * a ProductNotFoundException is fired, that the returned value is the body that you want to give back to the user
+     * and that the HTTP code should be 404 NOT FOUND
+     */
     ErrorDto productNotFoundHandler(ProductNotFoundException ex) {
         log.error("API Exception: {}", ex.getMessage(), ex);
         return new ErrorDto(NOT_FOUND.toString(), ex.getMessage());
