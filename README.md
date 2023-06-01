@@ -191,6 +191,8 @@ Aquí podeis encontrar la definicion de la API que vamos a programar:
 - products-api: [Products API Documentation](docs/Products%20API%20Documentation.html)
 - carts-api: [Carts API Documentation](docs/Carts%20API%20Documentation.html)
 
+Tutorial de como hacer servicios con API Rest en Spring Boot: https://spring.io/guides/tutorials/rest/
+
 ### Cómo empezar
 Teneis que importar el proyecto desde Github a vuestro Intellij. Para ello, creais un nuevo "Project from VCS":
 Git Checkout URL:  https://github.com/FranPerezProfe/charlaSpring.git
@@ -226,6 +228,8 @@ ha ido mal. Estas respuestas suelen usar los codigos HTTP 4XX.
 Un error handler en Spring está anotado con `@ControllerAdvice` para que spring sepa que la clase debe ser usada para procesar 
 errores.
 
+Tutorial sobre procesar errores en Spring Boot: https://www.baeldung.com/exception-handling-for-rest-with-spring
+
 #### Servicios
 
 Los servicios es donde nuestro programa ejecuta logica de negocio. Un servicio puede depender de otros servicios para realizar 
@@ -237,3 +241,25 @@ Los servicios se anotan con `@Service` y así, los podemos inyectar en otras par
 Los repositories son una interfaz que nos da Spring para realizar acciones en la base de datos de manera sencilla. Aquí, 
 Spring Data nos facilita múchisimo el trabajo, ya que no tenemos que escribir SQL, conectarnos a la base de datos etc. Todo 
 lo hace Spring Data por nosotros.
+
+Tutorial como usar Spring Data Repositories: https://spring.io/guides/gs/accessing-data-jpa/
+
+### Conceptos básicos de Gradle
+Gradle es una herramienta que nos ayuda a obtener las dependencias de nuestro projecto (los jars de las liberias que usamos),
+asi como ejecutar tareas cotidianas (Compilar el codigo, generar el jar, correr nuestra aplicacion, correr los tests unitarios..)
+
+En esta práctica usaremos tan solo dos comandos de gradle:
+- bootRun: Para ejecutar nuestra aplicacion
+- test: Para correr los tests y comprobar que todo funciona bien
+
+Estos comandos se pueden correr en la pestaña de Gradle de nuestro IDE, o en una terminal, usando el gradle wrapper: 
+En el directorio principal del proyecto, ejecuta `./gradlew bootRun`
+
+#### Ejecutando los microservicios
+Cada servicio está configurado para correr en un puerto diferente, para que no haya conflicto y podais correr los dos a la vez
+products usa el puerto 8001 y carts usa el puerto 8002
+
+Aqui podeis encontrar una colección de Postman con todas las llamadas REST de los dos servicios:
+[docs/Práctica Microservicios.postman_collections.json](docs/Práctica%20Microservicios.postman_collection.json)
+
+Podeis importar este `json` a vuestro postman.
