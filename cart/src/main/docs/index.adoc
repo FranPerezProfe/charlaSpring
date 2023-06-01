@@ -1,0 +1,82 @@
+= Carts API Documentation
+
+== Get All Carts
+
+.request
+include::{snippets}/carts-get/http-request.adoc[]
+
+.response
+include::{snippets}/carts-get/http-response.adoc[]
+
+.response fields
+include::{snippets}/carts-get/response-fields.adoc[]
+
+== Get a cart by its ID
+
+.request
+include::{snippets}/cart-get/http-request.adoc[]
+
+.response
+include::{snippets}/cart-get/http-response.adoc[]
+
+.response fields
+include::{snippets}/cart-get/response-fields.adoc[]
+
+If the cart cannot be found, you'll recieve an error like this one:
+
+.not found error
+include::{snippets}/cart-get-not-found/http-response.adoc[]
+
+include::{snippets}/cart-get-not-found/response-fields.adoc[]
+
+== Add a new cart
+
+.request
+include::{snippets}/carts-post/http-request.adoc[]
+
+.request fields
+include::{snippets}/carts-post/request-fields.adoc[]
+
+.response
+include::{snippets}/carts-post/http-response.adoc[]
+
+.response fields
+include::{snippets}/carts-post/response-fields.adoc[]
+
+== Update an existing cart
+
+.request
+include::{snippets}/carts-put/http-request.adoc[]
+
+.request fields
+include::{snippets}/carts-put/request-fields.adoc[]
+
+.response
+include::{snippets}/carts-put/http-response.adoc[]
+
+.response fields
+include::{snippets}/carts-put/response-fields.adoc[]
+
+If the cart cannot be found, you'll recieve an error like this one:
+
+.not found error
+include::{snippets}/carts-put-not-found/http-response.adoc[]
+
+include::{snippets}/carts-put-not-found/response-fields.adoc[]
+
+== Delete All Carts
+
+.request
+include::{snippets}/carts-delete/http-request.adoc[]
+
+.response
+include::{snippets}/carts-delete/http-response.adoc[]
+
+
+== Delete a cart by its ID
+
+.request
+include::{snippets}/cart-delete/http-request.adoc[]
+
+.response
+include::{snippets}/cart-delete/http-response.adoc[]

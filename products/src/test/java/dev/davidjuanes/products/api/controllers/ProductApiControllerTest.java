@@ -3,7 +3,7 @@ package dev.davidjuanes.products.api.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.davidjuanes.products.api.dto.NewOrUpdatedProductDto;
 import dev.davidjuanes.products.api.errors.ProductNotFoundException;
-import dev.davidjuanes.products.repositories.ProductRepository;
+import dev.davidjuanes.products.repository.ProductRepository;
 import dev.davidjuanes.products.model.Product;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;

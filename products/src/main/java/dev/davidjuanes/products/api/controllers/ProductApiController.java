@@ -3,7 +3,7 @@ package dev.davidjuanes.products.api.controllers;
 import dev.davidjuanes.products.api.dto.NewOrUpdatedProductDto;
 import dev.davidjuanes.products.api.dto.ProductDto;
 import dev.davidjuanes.products.api.errors.ProductNotFoundException;
-import dev.davidjuanes.products.repositories.ProductRepository;
+import dev.davidjuanes.products.repository.ProductRepository;
 import dev.davidjuanes.products.model.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

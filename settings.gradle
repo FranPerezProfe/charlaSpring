@@ -19,7 +19,6 @@ pluginManagement {
 rootProject.name = 'ejercicio-microservicios'
 include('products')
 include('cart')
-include('deals')
 include('domain-model')
 
 

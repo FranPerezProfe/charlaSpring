@@ -1,5 +1,18 @@
 version: '3.3'
 services:
+  carts-api:
+    container_name: carts-api
+    build:
+      context: cart
+      dockerfile: Dockerfile
+    image: carts-api:latest
+    environment:
+      - spring_profiles_active=production
+    depends_on:
+      - db
+      - products-api
+    ports:
+      - 8002:8002
   products-api:
     container_name: products-api
     build:
@@ -12,6 +25,16 @@ services:
       - db
     ports:
       - 8001:8001
+
+  api-gateway:
+    container_name: api-gateway
+    image: nginx
+    restart: always
+    volumes:
+      - ./production/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+
   db:
     container_name: db
     image: postgres
