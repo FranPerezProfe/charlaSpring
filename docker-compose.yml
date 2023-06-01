@@ -26,12 +26,14 @@ services:
     ports:
       - 8001:8001
 
-  api-gateway:
-    container_name: api-gateway
-    image: nginx
+  ui-api-gateway:
+    container_name: ui-api-gateway
+    build:
+      context: ui
+      dockerfile: Dockerfile
+    image: ui-api-gateway:latest
     restart: always
-    volumes:
-      - ./production/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+
     ports:
       - 80:80
 
