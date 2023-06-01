@@ -13,51 +13,58 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
-@RequestMapping("/api/v1/carts")
+//TODO Add annotations to mark this class as as REST Controller
 @Slf4j
 public class CartApiController {
 
-    @Autowired
-    private CartService cartService;
+    //TODO Inject dependency on cart service to perform the operations
 
-    @GetMapping
+    //TODO Add annotation to map this method to a GET call (GET /api/v1/carts)
     public List<CartDto> getAllCarts() {
         log.info("Getting all carts...");
-        return cartService.getAllCarts().stream().map(DetailedCart::mapToDto).collect(Collectors.toList());
+        //TODO Implement call to cartService to get all carts. Don't forget to translate to dto before returning.
+        return null; //FIXME remove me
     }
 
-    @GetMapping("/{id}")
-    public CartDto getCart(@PathVariable Long id) {
+    //TODO Add annotation to map this method to a GET call (GET /api/v1/carts/{id})
+    //TODO Don't forget to add @PathVariable to the part of the URL that should be passed as variable (hint: the id)
+    public CartDto getCart(Long id) {
         log.info("Getting cart {}...", id);
-        return cartService.getCartById(id).orElseThrow(() -> new CartNotFoundException(id)).mapToDto();
+        //TODO call to the cart service to find the product by ID, and if not found, throw a CartNotFoundException
+        return null; //FIXME remove me
     }
 
-    @PostMapping
-    public CartDto addCart(@RequestBody NewOrUpdatedCartDto cartDto) {
+    //TODO Add annotation to map this method to a POST call (POST /api/v1/carts)
+    //TODO Don't forget to add @RequestBody to the object that holds the cart to create
+    public CartDto addCart(NewOrUpdatedCartDto cartDto) {
         log.info("Creating new cart...");
-        return cartService.addCart(new Cart().mapToEntity(cartDto)).mapToDto();
+        //TODO add call to cart service to save the new product. Don't forget to translate it from DTO to Entity
+        return null; //FIXME remove me
     }
 
-    @PutMapping("/{id}")
-    public CartDto updateCart(@PathVariable Long id, @RequestBody NewOrUpdatedCartDto cartDto) {
+    //TODO Add annotation to map this method to a PUT call (PUT /api/v1/carts/{id})
+    //TODO Don't forget to add @RequestBody to the object that holds the cart to update
+    //TODO Don't forget to add @PathVariable to the part of the URL that should be passed as variable (hint: the id)
+    public CartDto updateCart(Long id, NewOrUpdatedCartDto cartDto) {
         log.info("Updating cart {}...", id);
-        //Ensure ID matches
-        cartDto.setId(id);
-        // Check that cart exists
-        getCart(id);
-        return cartService.updateCart(new Cart().mapToEntity(cartDto)).mapToDto();
+        //TODO Ensure ID is correctly set by setting the ID in the path to the id property in the DTO
+
+        //TODO call to the cart service to check if the cart exists, otherwise throw not found exception
+
+        //TODO Call to the cart service to update the product
+        return null; //FIXME remove me
     }
 
-    @DeleteMapping
+    //TODO Add annotation to map this method to a DELETE call (DELETE /api/v1/carts)
     public void deleteAllCarts() {
         log.info("Deleting all carts...");
-        cartService.deleteAllCarts();
+        //TODO Call to the cart service to delete all products
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteCart(@PathVariable Long id) {
+    //TODO Add annotation to map this method to a DELETE call (DELETE /api/v1/carts/{id})
+    //TODO Don't forget to add @PathVariable to the part of the URL that should be passed as variable (hint: the id)
+    public void deleteCart(Long id) {
         log.info("Deleting cart {}", id);
-        cartService.deleteCartById(id);
+        //TODO Call to the repository to delete the product by id
     }
 }

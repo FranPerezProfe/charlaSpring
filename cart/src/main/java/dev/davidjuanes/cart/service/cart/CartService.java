@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//TODO annotate this class to tell Spring this is a service
 public class CartService {
 
-    @Autowired
+    //TODO Tell Spring to inject the ProductService dependency by adding an annotation
     private ProductService productService;
-    @Autowired
+    //TODO Tell Spring to inject the cartRespository dependency by adding an annotation
     private CartRepository cartRepository;
 
     public List<DetailedCart> getAllCarts() {

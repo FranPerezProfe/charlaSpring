@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+//TODO Annotate this class to tell Spring this is a service
 @Slf4j
 public class ProductService {
     @Value( "${myshop.products.apiRoot}" )
@@ -19,6 +19,7 @@ public class ProductService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public void validateProductsExist(List<Long> productIds) {
+        log.info("Validating that the following products exist: {}", productIds);
         List<Product> products = restTemplate.exchange(apiRoot + PRODUCTS_URI,
                 HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Product>>() {}).getBody();

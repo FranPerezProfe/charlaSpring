@@ -12,21 +12,23 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-@ControllerAdvice
+//TODO Anotate this class to tell Spring this is an Exception Handler (Controller Advice)
 @Slf4j
 public class ErrorControllerAdvice {
 
-    @ResponseBody
-    @ExceptionHandler(CartNotFoundException.class)
-    @ResponseStatus(NOT_FOUND)
+    /*TODO Add three annotations needed here. You need to tell Spring that this method should be used when
+     * a CartNotFoundException is fired, that the returned value is the body that you want to give back to the user
+     * and that the HTTP code should be 404 NOT FOUND
+     */
     ErrorDto cartNotFoundHandler(CartNotFoundException ex) {
         log.error("API Exception: {}", ex.getMessage(), ex);
         return new ErrorDto(NOT_FOUND.toString(), ex.getMessage());
     }
 
-    @ResponseBody
-    @ExceptionHandler(ProductsNotFoundException.class)
-    @ResponseStatus(BAD_REQUEST)
+    /*TODO Add three annotations needed here. You need to tell Spring that this method should be used when
+     * a ProductsNotFoundException is fired, that the returned value is the body that you want to give back to the user
+     * and that the HTTP code should be 400 BAD REQUEST
+     */
     ErrorDto productsNotFoundHandler(ProductsNotFoundException ex) {
         log.error("API Exception: {}", ex.getMessage(), ex);
         return new ErrorDto(BAD_REQUEST.toString(), ex.getMessage());
