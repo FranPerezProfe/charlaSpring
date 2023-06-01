@@ -2,13 +2,28 @@
 
 <!-- TOC -->
 * [Ejercicio Microservicios](#ejercicio-microservicios)
-  * [Introducción](#introduccin)
+  * [Introducción](#introducción)
   * [Arquitectura de Microservicios](#arquitectura-de-microservicios)
     * [Monolitos](#monolitos)
     * [Microservicios](#microservicios)
   * [Frameworks](#frameworks)
     * [Spring](#spring)
     * [Lombok](#lombok)
+    * [Hibernate](#hibernate)
+  * [REST APIs](#rest-apis)
+  * [Parte Práctica](#parte-práctica)
+    * [Requisitos](#requisitos)
+    * [Descripción de la Práctica](#descripción-de-la-práctica)
+    * [Cómo empezar](#cómo-empezar)
+    * [Detalles técnicos](#detalles-técnicos)
+      * [Modelo de datos (Entities vs DTOs)](#modelo-de-datos-entities-vs-dtos)
+      * [API Controllers](#api-controllers)
+      * [API Error Handlers](#api-error-handlers)
+      * [Servicios](#servicios)
+      * [Repositories](#repositories)
+    * [Conceptos básicos de Gradle](#conceptos-básicos-de-gradle)
+      * [Ejecutando los microservicios](#ejecutando-los-microservicios)
+  * [DevOps: Docker & Docker-compose](#devops-docker--docker-compose)
 <!-- TOC -->
 
 ## Introducción
