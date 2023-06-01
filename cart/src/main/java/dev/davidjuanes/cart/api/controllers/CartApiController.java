@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 //TODO Add annotations to mark this class as as REST Controller
 @Slf4j
+@CrossOrigin
 public class CartApiController {
 
     //TODO Inject dependency on cart service to perform the operations
