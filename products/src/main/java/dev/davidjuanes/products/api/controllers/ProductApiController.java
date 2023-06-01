@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //TODO Add annotations to mark this class as as REST Controller
+@CrossOrigin
 @Slf4j
 public class ProductApiController {
 
