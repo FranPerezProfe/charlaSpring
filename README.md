@@ -27,7 +27,7 @@ Para este ejercicio usaremos diferentes conceptos y tecnologías que aclararemos
 - Testing (Unit tests, Integration Tests)
 
 ## Arquitectura de Microservicios
-![](resources/images/mono_vs_micro.jpg)
+![](docs/images/mono_vs_micro.jpg)
 
 ### Monolitos
 
@@ -80,7 +80,7 @@ https://www.youtube.com/watch?v=7LGPeBgNFuU
 ## Frameworks
 
 ### Spring
-![](resources/images/spring.jpg)
+![](docs/images/spring.jpg)
 
 Spring es un framework de desarrollo de aplicaciones en Java. Fue creado para simplificar y agilizar el desarrollo de aplicaciones empresariales, promoviendo buenas prácticas de programación y ofreciendo una amplia gama de funcionalidades y características.
 
@@ -99,7 +99,7 @@ Spring se compone de módulos que se pueden utilizar de forma independiente o co
 - **_Spring Boot:_** Es una extensión de Spring que simplifica aún más el proceso de configuración y desarrollo de aplicaciones, ofreciendo un enfoque de "opinión sobre la convención". Spring Boot incluye un servidor embebido y puede generar aplicaciones listas para desplegar de forma sencilla.
 
 ### Lombok
-![](resources/images/lombok.jpg)
+![](docs/images/lombok.jpg)
 
 Lombok es un framework de Java que se utiliza para simplificar el desarrollo de aplicaciones eliminando la necesidad de escribir código repetitivo y boilerplate. Su objetivo principal es reducir la cantidad de código "aburrido" que los desarrolladores tienen que escribir para crear clases Java, como los getters y setters, constructores, métodos equals y hashCode, y otros métodos comunes.
 
@@ -114,7 +114,7 @@ Algunas de las anotaciones más comunes proporcionadas por Lombok incluyen:
 - **`@Data`:**  combina varias otras anotaciones de Lombok, como `@Getter`, `@Setter`, `@ToString`, `@EqualsAndHashCode` y `@RequiredArgsConstructor`.
 
 ### Hibernate
-![](resources/images/hibernate.jpg)
+![](docs/images/hibernate.jpg)
 
 Hibernate es un framework de mapeo objeto-relacional (ORM) para Java. Su objetivo principal es simplificar y agilizar el desarrollo de aplicaciones que interactúan con bases de datos relacionales. Hibernate proporciona una capa de abstracción entre la aplicación y la base de datos, permitiendo que los objetos de la aplicación sean almacenados, actualizados y consultados en la base de datos de manera transparente y orientada a objetos.
 
@@ -124,7 +124,7 @@ Relaciones con Hibernate: https://www.baeldung.com/spring-data-rest-relationship
 
 
 ## REST APIs
-![](resources/images/REST%20APIs.jpg)
+![](docs/images/REST%20APIs.jpg)
 
 Una API REST se basa en los principios fundamentales de REST, que incluyen:
 
@@ -168,7 +168,7 @@ Aquí tienes una lista de algunos códigos de estado HTTP comúnmente utilizados
 
 ## Parte Práctica
 
-## Requisitos
+### Requisitos
 - Intellij IDEA Community Edition
 - JDK 17
 - Git
@@ -176,33 +176,64 @@ Aquí tienes una lista de algunos códigos de estado HTTP comúnmente utilizados
 - Postman Desktop Agent (Se necesita cuenta)
 
 
-# Descripción de la Práctica
+### Descripción de la Práctica
 
+Vamos a crear dos microservicios que seran parte de una tienda online. Haremos el servicio que se encarga de gestionar los 
+productos que vendemos en la tienda y el servicio que gestiona los carritos de la compra de cada usuario.
 
-# Detalles técnicos
-- Spring Scopes
-- Lambdas
+No vamos a gestionar usuarios, ya que complicaria la practica demasiado, pero podriamos imaginar otro microservicio dedicado
+a la gestión de usuarios y autenticación.
 
-## Cómo empezar
+Cada microservicio lo haremos con el framework Spring Boot, y expondrá una API REST que podria ser usada por la interfaz grafica (Web/Movil...)
+
+Aquí podeis encontrar la definicion de la API que vamos a programar:
+
+- products-api: [Products API Documentation](docs/Products%20API%20Documentation.html)
+- carts-api: [Carts API Documentation](docs/Carts%20API%20Documentation.html)
+
+### Cómo empezar
 Teneis que importar el proyecto desde Github a vuestro Intellij. Para ello, creais un nuevo "Project from VCS":
 Git Checkout URL:  https://github.com/FranPerezProfe/charlaSpring.git
 
-
-Una vez importado, tenemos que configurar el JDK que vamos a usar, en este caso version 17. Para ello, hacemos click derecho
-en la carpeta principal del proyecto, seleccionamos "Open Module Settings" y vamos a la tab Dependencies descargamos el JDK 17
-
-También tenemos que hacer este cambio en "Preferences... > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM"
+Una vez importado, tenemos que configurar el JDK que vamos a usar, en "Preferences... > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM"
 Ahora, hacemos click derecho en el archivo settings.gradle y seleccionamos "Link Gradle Project". Esperamos hasta
 que se haya configurado todo.
 
+### Detalles técnicos
+- Spring Scopes
+- Lambdas
 
-## Modelo de datos (Entities vs DTOs)
-## API Controllers
+#### Modelo de datos (Entities vs DTOs)
+Cada servicio tendrá dos modelos de datos: Entidades y DTOs. Las entidades se usan internamente para mantener nuestro datos,
+escribirlos en la base de datos, o pasarlos de un serivio a otro. Los DTOs se usan para modelar la información que exponemos en 
+nuestra API. No tendréis que crear estos modelos, ya están creados, pero si teneis que entener para que sirven para así poder
+usarlos correctamente.
+
+#### API Controllers
+Los Controllers son classes anotadas con `@RestController` que sirven para indicar a Spring los API endpoints que expondremos.
+Normalmente estos controllers pasarán la informacion a un servicio, y este realizará la accion correspondiente (Guardar/Leer de 
+base de datos, lógica de negocio etc)
 
 Tutorial de como crear un Controller en Spring: https://spring.io/guides/tutorials/rest/
 
-## API Error Handlers
+#### API Error Handlers
+Un error handler se encarga de procesar los errores (Excepciones) que hayan ocurrido mientras se procesa una petición en la API.
+Estos errores suelen ser de validacion de datos, de acceso incorrecto, o cuando un recurso al que se intenta acceder no existe.
 
-## Servicios
+Con el error handler, leemos la excepcion que ha ocurrido y generamos una respuesta para que el usuario se entere que algo 
+ha ido mal. Estas respuestas suelen usar los codigos HTTP 4XX.
 
-## Repositories
+Un error handler en Spring está anotado con `@ControllerAdvice` para que spring sepa que la clase debe ser usada para procesar 
+errores.
+
+#### Servicios
+
+Los servicios es donde nuestro programa ejecuta logica de negocio. Un servicio puede depender de otros servicios para realizar 
+su trabajo. Tambien, los servicios son los encargados de guardar/leer de base de datos usando el repository.
+Los servicios se anotan con `@Service` y así, los podemos inyectar en otras partes de nuestro programa usando `@Autowired`
+
+#### Repositories
+
+Los repositories son una interfaz que nos da Spring para realizar acciones en la base de datos de manera sencilla. Aquí, 
+Spring Data nos facilita múchisimo el trabajo, ya que no tenemos que escribir SQL, conectarnos a la base de datos etc. Todo 
+lo hace Spring Data por nosotros.
