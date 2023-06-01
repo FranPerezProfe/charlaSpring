@@ -46,10 +46,11 @@ public class ProductApiController {
     public ProductDto updateProduct(NewOrUpdatedProductDto updatedProduct, Long id) {
         log.info("Updating product {}...", id);
         //TODO Ensure ID is correctly set by setting the ID in the path to the id property in the DTO
-        updatedProduct.setId(id);
+        
         //TODO call to the repository to check if the product exists, otherwise throw not found exception
-
+        
         //TODO Call to the repository to update the product
+        
         return null; //FIXME remove me
     }
 
